@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+        <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+        <head>
+                <link rel="stylesheet" type="text/css" href="galleria/galleria.classic.css">
+                <meta charset="UTF-8">
+                <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/af.ui.min.css">
+                <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/icons.min.css">
+                <title>Blank App Designer Project Template</title>
+                <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+                <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's screen.
+  * Note that the meta viewport approach is being phased out in favor of the @viewport CSS rule.
+  * For a quick overview of both, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see what happens, try the app on a real device with and without a "meta viewport" tag.
+-->
+
+                <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+                <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+                <style>
+                        /* following three (cascaded) are equivalent to above three meta viewport statements */
+                            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+                            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                                @-ms-viewport { width: 100vw ; zoom: 100% ; }                           @viewport { width: 100vw ; zoom: 100% ; }
+                                @-ms-viewport { user-zoom: fixed ; }                                    @viewport { user-zoom: fixed ; }
+                                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+                </style>
+
+                <link rel="stylesheet" href="css/old-android.css">
+                <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+                <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+                <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+                <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+                <!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
+                <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+                <script src="intelxdk.js" type="test/javascript"></script>
+                <!-- phantom library, needed for XDK "legacy" container api calls -->
+                <script src="cordova.js"></script>
+                <!-- phantom library, needed for Cordova api calls -->
+                <script src="xhr.js"></script>
+                <!-- phantom library, needed for XDK "legacy" container CORS -->
+
+                <script src="js/app.js"></script>
+                <script src="js/init-app.js"></script>
+                <script src="js/init-dev.js"></script>
+                <!--                        
+                        You may substitute jQuery for the App Framework selector library.
+                        See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+                -->
+                <script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
+                <script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
+                <script type="application/javascript" src="js/index_user_scripts.js"></script>
+                <script type="application/javascript" src="app_framework/pageChangeRepeater.js"></script>
+                <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+                <!--                        
+                        You may substitute jQuery for the App Framework selector library.
+                        See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+                -->
+                <script type="application/javascript" src="lib/jquery.min.js"></script>
+                <script type="application/javascript" src="google_maps/google_maps.js"></script>
+                <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
+                <script type="application/javascript" src="galleria/galleria-1.3.6.min.js"></script>
+                <script type="application/javascript" src="galleria/galleria.classic.min.js"></script>
+                <script type="application/javascript" src="galleria/galleria-startup.js"></script>
+        </head>
+
+        <body id="afui">
+
+                <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+                <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+                <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+                <header class="container-group wrap-element uib_w_12" data-uib="app_framework/header" data-ver="1" id="af-header-0">
+                        <h1>Navigation</h1>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-left">
+                                <a class="button widget uib_w_15 d-margins icon home" data-uib="app_framework/button" data-ver="1" id="nav-home" href="#mainpage" data-transition="fade"></a>
+                                <a class="button widget uib_w_25 d-margins icon bug" data-uib="app_framework/button" data-ver="1" id="nav-arrived" href="#arrived_page" data-transition="fade"></a>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+                </header>
+                <header class="container-group wrap-element uib_w_13" data-uib="app_framework/header" data-ver="1" id="af-header-2">
+                        <h1>Welcome</h1>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-left">
+                                <a class="button widget uib_w_14 d-margins icon settings" data-uib="app_framework/button" data-ver="1" id="settings" href="#settings_page" data-transition="fade"></a>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+                </header>
+                <header class="container-group wrap-element uib_w_17" data-uib="app_framework/header" data-ver="1" id="af-header-3">
+                        <h1>Arrived</h1>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-left">
+                                <a class="button widget uib_w_22 d-margins icon home" data-uib="app_framework/button" data-ver="1" id="arrived-home" href="#mainpage" data-transition="fade"></a>
+                                <a class="button widget uib_w_29 d-margins icon bug" data-uib="app_framework/button" data-ver="1" id="arrived-exit" href="#exit_page" data-transition="fade"></a>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+                </header>
+                <header class="container-group wrap-element uib_w_26" data-uib="app_framework/header" data-ver="1" id="af-header-4">
+                        <h1>Goodbye</h1>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-left">
+                                <a class="button widget uib_w_28 d-margins icon home" data-uib="app_framework/button" data-ver="1" id="exit-home" href="#mainpage" data-transition="fade"></a>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+                </header>
+                <header class="container-group wrap-element uib_w_30" data-uib="app_framework/header" data-ver="1" id="af-header-5">
+                        <h1>Video</h1>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-left"><a class="button widget uib_w_36 d-margins icon left" data-uib="app_framework/button" data-ver="1" id="video-back" href="#arrived_page" data-transition="fade"> Back</a>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+                </header>
+                <header class="container-group wrap-element uib_w_32" data-uib="app_framework/header" data-ver="1" id="af-header-6">
+                        <h1>Pics / Text</h1>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-left"><a class="button widget uib_w_37 d-margins icon left" data-uib="app_framework/button" data-ver="1" id="pics-text-back" href="#arrived_page" data-transition="fade"> Back</a>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col header-right"></div>
+                </header>
+                <div class="uwrap" id="content">
+                        <div class="upage panel Bkgnd-StartScreen" id="mainpage" data-header="af-header-2" data-footer="none">
+                                <div class="upage-outer">
+
+                                        <div class="upage-content" id="mainsub">
+
+                                                <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+                                                        <div class="col uib_col_3 col-0_12-12 Bkgnd-FultonLogo" data-uib="layout/col" data-ver="0">
+                                                                <div class="widget-container content-area vertical-col center">
+                                                                        <span class="uib_shim"></span>
+                                                                </div>
+                                                        </div>
+                                                        <span class="uib_shim"></span>
+                                                </div>
+
+                                                <div class="grid grid-pad urow uib_row_4 row-height-4" data-uib="layout/row" data-ver="0">
+                                                        <div class="col uib_col_4 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                                <div class="widget-container content-area vertical-col">
+
+                                                                        <div class="widget uib_w_9 d-margins Text-Greeting" data-uib="media/text" data-ver="0">
+                                                                                <div class="widget-container left-receptacle"></div>
+                                                                                <div class="widget-container right-receptacle"></div>
+                                                                                <div>
+                                                                                        <p>Welcome to the Tour Devil Self-Guided Tour Application!</p>
+                                                                                </div>
+                                                                        </div><span class="uib_shim"></span>
+                                                                </div>
+                                                        </div>
+                                                        <span class="uib_shim"></span>
+                                                </div>
+
+                                                <div class="grid grid-pad urow uib_row_5 row-height-5" data-uib="layout/row" data-ver="0">
+                                                        <div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                                <div class="widget-container content-area vertical-col">
+
+                                                                        <a class="button widget uib_w_10 d-margins icon up" data-uib="app_framework/button" data-ver="1" href="#navigation_page" data-transition="fade">Start Tour</a><span class="uib_shim"></span>
+                                                                </div>
+                                                        </div>
+                                                        <span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                        <!-- /upage-content -->
+
+                                </div>
+                                <!-- /upage-outer -->
+
+                        </div>
+                        <div id="tester" string="test"></div>
+                        <div class="upage panel" id="settings_page" data-header="af-header-1" data-footer="none">
+                                <div class="upage-outer">
+                                        <header class="container-group inner-element uib_w_4" data-uib="app_framework/header" data-ver="1" id="af-header-1">
+                                                <h1>Settings</h1>
+                                                <div class="widget-container wrapping-col single-centered"></div>
+                                                <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                                                <div class="widget-container content-area horiz-area wrapping-col right">
+                                                        <a class="button widget uib_w_8 d-margins icon close" data-uib="app_framework/button" data-ver="1" id="close_button" href="#mainpage" data-transition="flip"></a>
+                                                </div>
+                                        </header>
+                                        <div id="settings_pagesub" class="upage-content ">
+
+                                                <div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row" data-ver="0">
+                                                        <div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                                <div class="widget-container content-area vertical-col">
+
+                                                                        <div class="widget uib_w_5 d-margins" data-uib="media/text" data-ver="0">
+                                                                                <div class="widget-container left-receptacle"></div>
+                                                                                <div class="widget-container right-receptacle"></div>
+                                                                                <div>
+                                                                                        <p>This is a template for settings.</p>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="table-thing with-label widget uib_w_6 d-margins" data-uib="app_framework/flip_switch" data-ver="1">
+                                                                                <label class="narrow-control label-inline">Setting One</label>
+                                                                                <div class="wide-control">
+                                                                                        <input type="checkbox" class="toggle" id="af-flipswitch-0">
+                                                                                        <label for="af-flipswitch-0" data-off="No" data-on="Yes"><span></span>
+                                                                                        </label>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="table-thing with-label widget uib_w_7 d-margins" data-uib="app_framework/flip_switch" data-ver="1">
+                                                                                <label class="narrow-control label-inline">Setting Two</label>
+                                                                                <div class="wide-control">
+                                                                                        <input type="checkbox" class="toggle" id="af-flipswitch-1">
+                                                                                        <label for="af-flipswitch-1" data-off="No" data-on="Yes"><span></span>
+                                                                                        </label>
+                                                                                </div>
+                                                                        </div><span class="uib_shim"></span>
+                                                                </div>
+                                                        </div>
+                                                        <span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                </div>
+                                <!-- /upage-outer -->
+                        </div>
+                        <!-- /upage -->
+
+                        <div class="upage panel" id="navigation_page" data-header="af-header-0" data-footer="none">
+                                <div class="upage-content content-area vertical-col" id="uib_page_2">
+
+                                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                                                <div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                        <div class="widget-container content-area vertical-col">
+
+                                                                <div id="mapA" class="widget uib_w_23 maps-size d-margins" data-uib="media/google_maps" data-ver="0" data-rpath="null" data-zoom="5" data-center-auto="true" data-long="-111.931772" data-lat="33.419844"></div><span class="uib_shim"></span>
+                                                        </div>
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                        </div>
+
+                                        <div class="grid grid-pad urow uib_row_19 row-height-19" data-uib="layout/row" data-ver="0">
+                                                <div class="col uib_col_20 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                        <div class="widget-container content-area vertical-col">
+
+                                                                <a class="button widget uib_w_40 d-margins" data-uib="app_framework/button" data-ver="1">Load Tour Points/update Gps</a><a class="button widget uib_w_41 d-margins" data-uib="app_framework/button"
+                                                                data-ver="1">Calculate Distance</a>
+                                                                <span class="uib_shim"></span>
+                                                        </div>
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                        </div>
+                                </div>
+
+                        </div>
+                        <div class="upage vertical-col left panel" id="arrived_page" data-header="af-header-3" data-footer="none">
+                                <div class="grid grid-pad urow uib_row_7 row-height-7" data-uib="layout/row" data-ver="0">
+
+                                        <div class="col uib_col_9 col-0" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+                                                        <!--not my map -->
+                                                        <div class="widget uib_w_24 maps-size d-margins" data-uib="media/google_maps" data-ver="0" data-rpath="null" data-zoom="8" data-center-auto="true" data-long="-111.931318" data-lat="33.420182"></div><span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+
+                                        <div class="col uib_col_6 col-0" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+
+                                                        <div class="button-grouped flex widget uib_w_18 d-margins" data-uib="app_framework/button_group" data-ver="1"><a class="button widget uib_w_19 icon tv" data-uib="app_framework/button" data-ver="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(102, 102, 102); border-top-left-radius: 6px; border-bottom-left-radius: 6px;"
+                                                                href="#video_page" data-transition="fade">Video</a>
+                                                                <a class="button widget uib_w_20 icon picture" data-uib="app_framework/button" data-ver="1" href="#pics_text_page" data-transition="fade">Pics / Text</a><a class="button widget uib_w_21 icon check"
+                                                                data-uib="app_framework/button" data-ver="1" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;" href="#navigation_page" data-transition="fade">Next</a>
+                                                        </div><span class="uib_shim"></span>
+                                                </div>
+                                        </div><span class="uib_shim"></span>
+                                </div>
+                        </div>
+                        <div class="upage vertical-col panel" id="exit_page" data-header="af-header-4" data-footer="none">
+
+                                <div class="grid grid-pad urow uib_row_11 row-height-11" data-uib="layout/row" data-ver="0">
+
+                                        <div class="col uib_col_10 col-0" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+
+                                                        <div class="widget uib_w_27 d-margins Text-Greeting" data-uib="media/text" data-ver="0">
+                                                                <div class="widget-container left-receptacle"></div>
+                                                                <div class="widget-container right-receptacle"></div>
+                                                                <div>
+                                                                        <p>Thank You for completing the Tour Devil Self-Guided Tour Application!</p>
+                                                                </div>
+                                                        </div><span class="uib_shim"></span>
+                                                </div>
+                                        </div><span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid grid-pad urow uib_row_18 row-height-18" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_19 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+
+                                                        <div class="widget uib_w_39 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                                                <figure class="figure-align">
+                                                                        <img src="images/Sparky_image.jpg">
+                                                                        <figcaption data-position="bottom"></figcaption>
+                                                                </figure>
+                                                        </div><span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                </div>
+                        </div>
+                        <div class="upage vertical-col panel" id="video_page" data-header="af-header-5" data-footer="none">
+
+                                <div class="grid grid-pad urow uib_row_16 row-height-16" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_17 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+
+                                                        <figure class="margin-auto widget uib_w_35 d-margins video-size" data-uib="media/video" data-ver="0">
+                                                                <video>
+                                                                        <source src="my/video/src.webm" type="video/webm">
+                                                                                <source src="my/video/src.mp4" type="video/mp4">
+                                                                </video>
+                                                        </figure><span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                </div>
+                        </div>
+                        <div class="upage vertical-col left panel" id="pics_text_page" data-header="af-header-6" data-footer="none">
+                                <div class="grid grid-pad urow uib_row_14 row-height-14" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_15 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+
+                                                        <div class="galleria image-gallery-size widget uib_w_33 d-margins" data-uib="media/image_gallery" data-ver="0" data-sm-trigger="true" images-json="gallery_images/gallery_images.json">
+                                                        </div><span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid grid-pad urow uib_row_15 row-height-15" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_16 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+
+                                                        <div class="widget uib_w_34 d-margins" data-uib="media/text" data-ver="0">
+                                                                <div class="widget-container left-receptacle"></div>
+                                                                <div class="widget-container right-receptacle"></div>
+                                                                <div>
+                                                                        <p>Sample text and pictures.</p>
+                                                                </div>
+                                                        </div><span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid grid-pad urow uib_row_17 row-height-17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_18 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                                <div class="widget-container content-area vertical-col">
+
+                                                        <a class="button widget uib_w_38 d-margins icon headset" data-uib="app_framework/button" data-ver="1">Audio</a><span class="uib_shim"></span>
+                                                </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                </div>
+                        </div>
+                </div>
+                <!-- /uwrap -->
+        </body>
+
+</html>
