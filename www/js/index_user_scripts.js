@@ -16,46 +16,20 @@
         //get a reference to the application map
         var myMap = googleMaps.getObjectBySelector('#mapA');
         myMap.setZoom(17);
-       
+  
         if(!pointsLoaded)
         {
-        loadAllTourPoints(myMap);
+            //these two lines of code remove the marker that is added by the ide
+            var markerList =  googleMaps.getMarkersByID('#mapA');
+            markerList[0].setMap(null);
+           
+            loadAllTourPoints(myMap);
+             //myMap.setCenter(currentLocationMarker.getPosition());       
+        } else
+        {
+            //if the points are already loaded then pressing the button again will call the method which only shows the next point
+           // loadOnlyNextPoint(myMap);
         }
-        
-      
-       
-        var result =  myMap.getCenter().toString();
-        var myLocation = new google.maps.LatLng(defaultTourPoints[0][0], defaultTourPoints[0][1] );
-        var userLatLng = new google.maps.LatLng(userLat, userLng );
-        var homeLocation = new google.maps.LatLng(defaultTourPoints[nextTourPoint][0], defaultTourPoints[nextTourPoint][1] );
-        var distance = getDistance(userLatLng, homeLocation);
-        var markerAdded =  new google.maps.Marker({position: myLocation, map: myMap});
-       
-       /*
-        var circle_Options = {
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
-            map: myMap,
-            center: myLocation,
-            radius: 10  
-        };
-        
-        firstCircle = new google.maps.Circle(circle_Options);
-        */
-        
-        /*
-     
-    var marker = new google.maps.Marker({
-      position: myLocation,
-      map: myMap,
-      title: 'Hello World!'
-  });
-       */
-         
-   
     });
            
      
@@ -116,8 +90,53 @@ var loadAllTourPoints = function(myMap)
             
         }
             pointsLoaded = true;
+    myMap.setCenter(new google.maps.LatLng(33.419844,-111.931772 ));
 
 };
+
+
+
+var loadOnlyNextPoint = function(myMap)
+{
+     var circleArray = [];
+        var i;
+    var tempMarker;
+    
+    for(i=0; i<10; i++)
+        {
+           var tempLocation = new google.maps.LatLng(defaultTourPoints[i][0], defaultTourPoints[i][1]); 
+            if(i == nextTourPoint)
+            {
+                  tempMarker =  new google.maps.Marker({position: tempLocation, map: myMap, icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"});
+                markerArray[i] = tempMarker;
+            }else
+            {
+             markerArray[i].setMap(null) = tempMarker; 
+            }
+           
+            var temp_Options = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: myMap,
+            center: tempLocation,
+            radius: 10 
+        };
+         
+            circleArray[i] = temp_Options;
+            if(i == nextTourPoint){
+                
+        var tempCircle = new google.maps.Circle(temp_Options);
+            }
+               
+            
+        }
+            
+    myMap.setCenter(new google.maps.LatLng(33.419844,-111.931772 ));
+    
+}
 
 var currentLocationLat;
 var currentLocationLng;
