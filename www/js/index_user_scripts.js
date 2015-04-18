@@ -7,23 +7,20 @@
  function register_event_handlers()
  {
      /* button  Test_button */
+     
+                  
     $(document).on("click", ".uib_w_40", function(evt)
     {
         //this tracks the users current position
-        var geolocationWatchTimer = intel.xdk.geolocation.watchPosition(suc,fail,options);
+        //var geolocationWatchTimer = intel.xdk.geolocation.watchPosition(suc,fail,options);
       
         //get a reference to the application map
         var myMap = googleMaps.getObjectBySelector('#mapA');
-        myMap.setZoom(17);
+        
   
         if(!pointsLoaded)
         {
-            //these two lines of code remove the marker that is added by the ide
-            var markerList =  googleMaps.getMarkersByID('#mapA');
-            markerList[0].setMap(null);
             
-            var tempLocation = new google.maps.LatLng(33.419844, -111.931772);  
-            homeMarker =  new google.maps.Marker({position: tempLocation, map: myMap, icon: "http://maps.google.com/mapfiles/kml/pal3/icon56.png"});
             
            // http://maps.google.com/mapfiles/kml/pal3
            
@@ -51,6 +48,27 @@
            }
   });
      
+     
+       //start tour button uib_w_10
+     $(document).on("click", ".uib_w_10", function(evt)
+    {
+         var myMap = googleMaps.getObjectBySelector('#mapA');
+         myMap.setZoom(17);
+         //these two lines of code remove the marker that is added by the ide
+            var markerList =  googleMaps.getMarkersByID('#mapA');
+            markerList[0].setMap(null);
+            
+            var tempLocation = new google.maps.LatLng(33.419844, -111.931772);  
+            homeMarker =  new google.maps.Marker({position: tempLocation, map: myMap, icon: "http://maps.google.com/mapfiles/kml/pal3/icon56.png"});
+         
+        
+        loadAllTourPoints(myMap);
+         
+         
+     });
+     
+     
+     
     }   
       
  document.addEventListener("app.Ready", register_event_handlers, false);
@@ -76,8 +94,6 @@ var loadAllTourPoints = function(myMap)
             }
             
            
-           
-            
             var temp_Options = {
             strokeColor: '#FF0000',
             strokeOpacity: 0.8,
@@ -90,8 +106,8 @@ var loadAllTourPoints = function(myMap)
         };
          
             
-        var tempCircle = new google.maps.Circle(temp_Options);
-           circleArray[i] = tempCircle;    
+        circleArray[i]= new google.maps.Circle(temp_Options);
+               
             
         }
             pointsLoaded = true;
@@ -129,8 +145,9 @@ var loadOnlyNextPoint = function(myMap)
             radius: 10 
         };
              
-        var tempCircle = new google.maps.Circle(temp_Options);
-        circleArray[nextTourPoint] = tempCircle;   
+         
+        circleArray[nextTourPoint] = new google.maps.Circle(temp_Options);  
+
                      
     myMap.setCenter(new google.maps.LatLng(33.419844,-111.931772 ));
       
@@ -152,11 +169,6 @@ var markerArray = [];
 var circleArray = [];
 var pointsLoaded = false;
 
-
-
-
-
-
 //maps the default tour
 var defaultTourPoints = [
    
@@ -171,8 +183,6 @@ var defaultTourPoints = [
     [33.418448 ,-111.931536], 
     [33.418421,-111.932311], 
 ];
-
-
 
 
 //This array holds the options for the command
@@ -234,7 +244,6 @@ var suc = function(p){
 };
 
 
-
 var updateCurrentTourPoint = function(currentLatLng, currentTourPoint, myMap)
 {
      //calculate the distance between points
@@ -254,7 +263,21 @@ var updateCurrentTourPoint = function(currentLatLng, currentTourPoint, myMap)
         markerArray[nextTourPoint].setMap(null);  
         var tempLocation = new google.maps.LatLng(defaultTourPoints[nextTourPoint][0], defaultTourPoints[nextTourPoint][1]);  
         var tempMarker =  new google.maps.Marker({position: tempLocation, map: myMap, icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"});  
-        markerArray[nextTourPoint] = tempMarker;             
+        markerArray[nextTourPoint] = tempMarker;   
+            
+            var temp_Options = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: myMap,
+            center: tempLocation,
+            radius: 10 
+        };
+             
+         
+        circleArray[nextTourPoint] = new google.maps.Circle(temp_Options);  
     }
       
 };
@@ -266,8 +289,6 @@ var stopGeolocation = function(){
         intel.xdk.geolocation.clearWatch(geolocationWatchTimer);
 };
      
-
-
 
 //Use these functions to calculate the distance between two points on the map
 var rad = function(x) {
@@ -286,8 +307,4 @@ var getDistance = function(p1, p2) {
   var d = R * c;
   return d; // returns the distance in meter
 };
-
-
-
-
 
