@@ -1,0 +1,162 @@
+old code:
+
+//var watchTimer = intel.xdk.geolocation.watchPosition(successFunction,errorFunction,options);
+
+//Function used to update the current location
+var onSuccess = function(position) {
+   /* alert('Latitude: '          + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n' 
+          );
+        */
+    
+    /*
+        var myMap = googleMaps.getObjectBySelector('#mapA');
+        var oldMarker = userMarker;
+        var userLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude );
+        userMarker =  new google.maps.Marker({position: userLocation, map: myMap, draggable: true, opacity:.9, icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png'});  
+        userLat = position.coords.latitude;
+        userLng = position.coords.longitude ;
+       
+    if(oldMarker != null)
+    {
+    oldMarker.setMap(null);
+    }
+    
+   
+    
+    */
+       
+         //alert("updated Map info"); 
+};
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+
+
+/*
+raw data for location
+
+
+1
+lat:33.419844   long:-111.931772
+2
+lat:33.419844   long:-111.931772
+3
+lat:33.419777   long:-111.932591
+4
+lat:33.419993   long:-111.932625
+5
+lat:33.420230   long:-111.932637
+6
+lat:33.420283   long:-111.932112
+7
+lat: 33.420219  long:-111.931381
+8
+lat:33.419265   long:-111.931098
+9
+lat:33.418849   long:-111.931342
+10
+lat:33.418448   long:-111.931536
+11
+lat:33.418421  long:-111.932311
+
+*/
+
+
+
+
+
+
+//inside the onclick function
+ //outdated code to be removed
+        //get the current position of the user
+       // intel.xdk.geolocation.getCurrentPosition(onSuccess, onError);
+       // var geoLocation =   intel.xdk.geolocation.getCurrentPosition();
+        //alert("test");
+        
+        
+         // markerArray[4].setMap(null);
+	        
+        //alert(defaultTourPoints[1][1] );
+        
+        
+        
+   //moved outside of the timer function
+     /*
+       distance = getDistance(currentLatLng, currentTourPoint);
+       
+       //reached destination
+       if(distance<10 && nextTourPoint<10)
+       {
+       
+       //remove waypoint
+       markerArray[nextTourPoint].setMap(null);
+            
+       //go to next point    
+       nextTourPoint++;
+               
+       //this is to change the color of the point    
+           markerArray[nextTourPoint].setMap(null);  
+           var tempLocation = new google.maps.LatLng(defaultTourPoints[nextTourPoint][0], defaultTourPoints[nextTourPoint][1]);  
+           var tempMarker =  new google.maps.Marker({position: tempLocation, map: myMap, icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"});  
+           markerArray[nextTourPoint] = tempMarker;
+               
+               
+           }
+      
+       if(oldLat != currentLocationLat || oldLng != currentLocationLng || !startedTracking)
+       {
+           startedTracking  = true;
+           
+           var oldWatch = currentLocationMarker;
+           var watchLocation = new google.maps.LatLng(currentLocationLat, currentLocationLng );
+           currentLocationMarker =  new google.maps.Marker({position: watchLocation, map: myMap, draggable: true, opacity:.9,      icon:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'});  
+           if (oldWatch != null)
+           {
+            oldWatch.setMap(null);   
+           }
+           myMap.setCenter(watchLocation);
+       }
+*/
+
+
+
+
+
+// inside the evnet listner for load points
+
+ //var myLocation = new google.maps.LatLng(defaultTourPoints[0][0], defaultTourPoints[0][1] );
+        //var userLatLng = new google.maps.LatLng(userLat, userLng );
+       // var homeLocation = new google.maps.LatLng(defaultTourPoints[nextTourPoint][0], defaultTourPoints[nextTourPoint][1] );
+        //var distance = getDistance(userLatLng, homeLocation);
+       // var markerAdded =  new google.maps.Marker({position: myLocation, map: myMap});
+        
+       
+       /*
+        var circle_Options = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: myMap,
+            center: myLocation,
+            radius: 10  
+        };
+        
+        firstCircle = new google.maps.Circle(circle_Options);
+        */
+        
+        /*
+     
+    var marker = new google.maps.Marker({
+      position: myLocation,
+      map: myMap,
+      title: 'Hello World!'
+  });
+       */
+         
